@@ -7,59 +7,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Arimo', sans-serif; margin: 0; padding: 0; color: #4a4a4a; line-height: 1.8; background-color: #fdfaf6; }
-        .hero { background-color: #93a693; color: white; padding: 60px 20px; text-align: center; }
-        .hero h1 { font-size: 2.8em; margin: 0; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        .poem { font-size: 1.2em; text-align: center; margin: 30px 0; color: #5a6a5a; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        h2 { color: #93a693; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
-        h3 { color: #d4a373; }
+        .hero { background-color: #93a693; color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 3.2em; margin: 0; letter-spacing: 1px; }
+        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+        .poem { font-size: 1.25em; text-align: center; margin: 40px 0; color: #5a6a5a; }
+        .card { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .centered-text { text-align: center; }
+        h2 { color: #93a693; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; margin-top: 0; }
+        h3 { color: #d4a373; margin-bottom: 10px; }
         ul { list-style: none; padding: 0; }
-        ul li { margin-bottom: 10px; }
-        ul li::before { content: '✔ '; color: #93a693; font-weight: bold; margin-left: 10px; }
-        .price-list { width: 100%; max-width: 400px; margin: auto; line-height: 2; }
-        .price-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding: 5px 0;}
-        .form-area { background-color: #f4efea; padding: 30px; border-radius: 15px; border: 1px dashed #d4a373; margin-top: 30px; }
+        ul li { margin-bottom: 10px; position: relative; padding-right: 25px; }
+        ul li::before { content: '✔'; color: #93a693; position: absolute; right: 0; font-weight: bold; }
+        
+        .price-list { width: 100%; max-width: 400px; margin: auto; line-height: 2.2; font-size: 1.1em;}
+        .price-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding: 8px 0;}
+        
+        .form-area { background-color: #f4efea; padding: 40px; border-radius: 15px; border: 1px dashed #d4a373; margin-top: 40px; }
         .form-container { max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; text-align: right; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #5a6a5a; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-size: 1em; background-color: #fff; }
-        .btn-wrapper { display: flex; justify-content: center; width: 100%; }
-        .btn { background-color: #93a693; color: white; padding: 16px 30px; font-size: 1.2em; font-weight: bold; border: none; border-radius: 30px; cursor: pointer; text-decoration: none; width: 100%; max-width: 280px; text-align: center; }
-        .footer { text-align: center; padding: 30px; font-size: 0.9em; color: #999; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 0.95em; color: #5a6a5a; }
+        
+        /* עיצוב אחיד ומדויק לכל 4 השדות - לבן, ללא הדגשה, ובאותו פונט */
+        input, select { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-family: 'Arimo', sans-serif; /* פונט אחיד */
+            font-size: 1em; 
+            font-weight: 400; /* פונט רגיל ולא מודגש */
+            color: #4a4a4a;
+            background-color: #ffffff; /* רקע לבן נקי */
+            appearance: none; /* מבטל את עיצוב ה-NATIVE של הדפדפן */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .btn-wrapper { display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 15px; }
+        .btn { background-color: #93a693; color: white; padding: 18px 40px; font-size: 1.2em; font-weight: bold; border: none; border-radius: 30px; cursor: pointer; text-decoration: none; transition: background 0.3s, transform 0.2s; width: 100%; max-width: 320px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn:hover { background-color: #7b8c7b; transform: scale(1.02); }
+        
+        .footer { text-align: center; padding: 40px; font-size: 0.9em; color: #999; }
     </style>
 </head>
 <body>
-    <div class="hero"><h1>הוויה מתגלה</h1></div>
+
+    <div class="hero">
+        <h1>הוויה מתגלה</h1>
+    </div>
+
     <div class="container">
         <div class="poem">
-            יש תנועה עדינה מתחת לפני השטח...<br>
+            יש תנועה עדינה מתחת לפני השטח<br>
+            כמעט לא מורגשת - אבל נוכחת.<br>
+            משהו מבקש לזוז. להיפתח. להיזכר.<br><br>
             זו הזמנה לעצור רגע מהמרוץ,<br>
-            ולהקשיב למה שמבקש להתגלות מבפנים.
+            ולהקשיב למה שמבקש להתגלות מבפנים -<br>
+            ברכות, בלי דרמה, בקצב שלך.
         </div>
-        <div class="card" style="text-align: center;">
+
+        <div class="card centered-text">
             <h3>סדרה של 4 מפגשים חווייתיים</h3>
-            <p><strong>ימי ראשון ביוני | 18:00–22:00 | סביון</strong></p>
+            <p style="font-size: 1.2em; font-weight: bold;">ימי ראשון ביוני | 18:00-22:00 | סביון</p>
+            <p>במרחב בטוח, שקט ומוחזק, נעבוד עם כלים מעולמות הגוף-רוח-נפש:<br>
+            נשימה מעגלית, רעד (TRE), מיינדפולנס, תנועה, כתיבה ועוד.</p>
         </div>
+
         <div class="card">
             <h2>מה מחכה לך בתהליך:</h2>
             <ul>
                 <li>שחרור סטרס ומתחים</li>
-                <li>עיבוד רגשי עדין</li>
+                <li>עיבוד רגשי עדין ולא מציף</li>
                 <li>חיבור לגוף ולתחושת חיות</li>
+                <li>מפגש אמיתי עם עצמך</li>
             </ul>
+            <p>כל מפגש נמשך כ-4 שעות - זמן שמאפשר להאט, להעמיק ולהתרווח בתוך ההוויה המתגלה.</p>
+            <p>זו לא רק למידה ותרגול של טכניקות, אלא חוויה חיה של היזכרות במה שכבר קיים, שמבקש להיפגש ולהתגלות מחדש. לפגוש את עצמך מתחת לשכבות, איפה שהדברים פשוטים יותר. אמיתיים יותר.</p>
         </div>
-        <div class="card" style="text-align: center;">
-            <h2>השקעה</h2>
+
+        <div class="card centered-text">
+            <h2>תאריכים</h2>
+            <p style="font-size: 1.4em; font-weight: bold; letter-spacing: 2px;">7.6 | 14.6 | 21.6 | 28.6</p>
+            <p>ניתן להגיע גם למפגשים בודדים, אך מומלץ לעבור את התהליך המלא. מספר המקומות מוגבל.</p>
+            
+            <h2 style="margin-top: 40px;">השקעה</h2>
             <div class="price-list">
                 <div class="price-row"><span>מפגש בודד</span> <span>360 ₪</span></div>
-                <div class="price-row"><span>4 מפגשים</span> <span>980 ₪</span></div>
+                <div class="price-row"><span>2 מפגשים</span> <span>610 ₪</span></div>
+                <div class="price-row"><span>3 מפגשים</span> <span>820 ₪</span></div>
+                <div class="price-row" style="font-weight: bold; color: #d4a373;"><span>4 מפגשים</span> <span>980 ₪</span></div>
             </div>
         </div>
-        <div class="form-area">
-            <h3 style="text-align: center;">להרשמה ושריון מקום</h3>
+
+        <div class="card">
+            <h2>על המנחה - פדית ציבייר</h2>
+            <p>נשואה לאלון ואמא ליואב ומעיין.<br>
+            מלווה תהליכי התפתחות והחלמה מטראומה, דיכאון וחרדה. מורה ליוגה ומנחת קבוצות.</p>
+            <p><strong>עובדת עם גישות גוף-רוח-נפש:</strong><br>
+            פסיכותרפיה (FOBP) - נשימה מעגלית משולבת פוקוסינג | החוויה הסומאטית (SE) | מיינדפולנס | עבודה עם רעד ספונטני (TRE) | EMDR | ריברסינג | קבלה | ועוד.</p>
+            <p>מלווה תהליכים אישיים וקבוצתיים.<br>
+            מייסדת “סטודיו לנשום” - קליניקה פרטית בקריית אונו.</p>
+        </div>
+
+        <div class="form-area" id="register">
+            <h3 class="centered-text">להרשמה ושריון מקום</h3>
             <div class="form-container">
                 <label>שם מלא</label>
-                <input type="text" id="waName" placeholder="הזן/הזיני שם">
+                <input type="text" id="waName" placeholder="הזן/הזיני שם מלא">
                 <label>גיל</label>
                 <input type="number" id="waAge" placeholder="הזן/הזיני גיל">
                 <label>מין</label>
@@ -67,29 +122,40 @@
                     <option value="" disabled selected>בחר/י מין</option>
                     <option value="נקבה">נקבה</option>
                     <option value="זכר">זכר</option>
+                    <option value="אחר">אחר</option>
                 </select>
-                <label>מסלול</label>
+                <label>מסלול מבוקש</label>
                 <select id="waPlan">
                     <option value="" disabled selected>בחר/י מסלול</option>
-                    <option value="בודד">מפגש בודד</option>
-                    <option value="מלא">התהליך המלא</option>
+                    <option value="מפגש בודד">מפגש בודד (360 ₪)</option>
+                    <option value="2 מפגשים">2 מפגשים (610 ₪)</option>
+                    <option value="3 מפגשים">3 מפגשים (820 ₪)</option>
+                    <option value="התהליך המלא">התהליך המלא - 4 מפגשים (980 ₪)</option>
                 </select>
                 <div class="btn-wrapper">
-                    <button class="btn" onclick="sendToWhatsApp()">מעבר לווטסאפ</button>
+                    <button class="btn" onclick="sendToWhatsApp()">מעבר לשיחת ווטסאפ להרשמה</button>
                 </div>
             </div>
+            <p class="centered-text" style="font-size: 0.85em; color: #777; margin-top: 15px;">* הלחיצה תעביר לווטסאפ עם הודעה מוכנה לפדית.</p>
         </div>
     </div>
+
     <div class="footer">© סטודיו לנשום</div>
+
     <script>
         function sendToWhatsApp() {
-            var name = document.getElementById("waName").value;
-            var age = document.getElementById("waAge").value;
-            var gender = document.getElementById("waGender").value;
-            var plan = document.getElementById("waPlan").value;
-            if(!name || !age || !gender || !plan) { alert("נא למלא הכל"); return; }
-            var msg = "שלום פדית, אשמח להירשם!\\nשם: "+name+"\\nגיל: "+age+"\\nמין: "+gender+"\\nמסלול: "+plan;
-            window.location.href = "https://wa.me/972548111353?text=" + encodeURIComponent(msg);
+            const name = document.getElementById("waName").value.trim();
+            const age = document.getElementById("waAge").value.trim();
+            const gender = document.getElementById("waGender").value;
+            const plan = document.getElementById("waPlan").value;
+
+            if (!name || !age || !gender || !plan) {
+                alert("אנא הזן/הזיני את כל הפרטים לפני המעבר לווטסאפ.");
+                return;
+            }
+
+            const message = `שלום פדית, אשמח להירשם לסדנת 'הוויה מתגלה'!🌿\nשם: ${name}\nגיל: ${age}\nמין: ${gender}\nמסלול מבוקש: ${plan}`;
+            window.location.href = "https://wa.me/972548111353?text=" + encodeURIComponent(message);
         }
     </script>
 </body>
